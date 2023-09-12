@@ -1,0 +1,6 @@
+\contentsline {chapter}{\numberline {1}Triangle}{1}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Vectors}{1}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Median}{22}{section.1.2}%
+\contentsline {section}{\numberline {1.3}Altitude}{22}{section.1.3}%
+\contentsline {section}{\numberline {1.4}Perpendicular Bisector}{22}{section.1.4}%
+\contentsline {section}{\numberline {1.5}Angle Bisector}{22}{section.1.5}%
