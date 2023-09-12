@@ -1,0 +1,31 @@
+\documentclass[11pt]{book}
+\usepackage{gvv-book}
+\usepackage{gvv}
+\usepackage[sectionbib,authoryear]{natbib}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{2}
+\makeindex
+
+\begin{document}
+\frontmatter
+\tableofcontents
+\setcounter{page}{1}
+\mainmatter
+\chapter{Triangle}
+Consider a triangle with vertices
+\begin{align}
+\label{eq:tri-pts}
+\vec{A}=\myvec{-3 \\ -5},\,
+\vec{B}=\myvec{3\\-5},\,
+	\vec{c}=\myvec{-4\\-3},\,
+\end{align}
+
+\section{Vectors}
+\input{subsec/vectors.tex}
+\section{Median}
+%\input{subsec/median}
+\section{Altitude}
+\section{Perpendicular Bisector}
+\section{Angle Bisector}
+
+\end{document}

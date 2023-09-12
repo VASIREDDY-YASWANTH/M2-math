@@ -1,0 +1,83 @@
+%% Run LaTeX on this file several times to get Table of Contents,
+%% cross-references, and citations.
+
+\documentclass[11pt]{book}
+\usepackage{gvv-book}
+\usepackage{gvv}
+%\usepackage{Wiley-AuthoringTemplate}
+\usepackage[sectionbib,authoryear]{natbib}% for name-date citation comment the below line
+%\usepackage[sectionbib,numbers]{natbib}% for numbered citation comment the above line
+
+%%********************************************************************%%
+%%       How many levels of section head would you like numbered?     %%
+%% 0= no section numbers, 1= section, 2= section, 3= subsection %%
+\setcounter{secnumdepth}{3}
+%%********************************************************************%%
+%%**********************************************************************%%
+%%     How many levels of section head would you like to appear in the  %%
+%%				Table of Contents?			%%
+%% 0= chapter, 1= section, 2= section, 3= subsection titles.	%%
+\setcounter{tocdepth}{2}
+%%**********************************************************************%%
+
+%\includeonly{ch01}
+\makeindex
+
+\begin{document}
+
+\frontmatter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Title Pages
+%% Wiley will provide title and copyright page, but you can make
+%% your own titlepages if you'd like anyway
+%% Setting up title pages, type in the appropriate names here:
+
+\booktitle{Geometry}
+
+\subtitle{Through Algebra}
+
+\AuAff{G. V. V. Sharma}
+
+
+\titlepage
+
+
+\begin{copyrightpage}{2022}
+%Title, etc
+\end{copyrightpage}
+
+\tableofcontents
+
+
+\setcounter{page}{1}
+
+\begin{introduction}
+This book shows how to solve problems in geometry using trigonometry and coordinate geometry. 
+
+\end{introduction}
+
+\mainmatter
+
+\chapter{Triangle}
+Consider a triangle with vertices
+		\begin{align}
+			\label{eq:tri-pts}
+			\vec{A} = \myvec{1 \\ -1},\,
+			\vec{B} = \myvec{-4 \\ 6},\,
+			\vec{C} = \myvec{-3 \\ -5}
+		\end{align}
+\section{Vectors}
+\input{chapters/triangle/exam}
+\section{Median}
+\input{chapters/triangle/median}
+\section{Altitude}
+\input{chapters/triangle/altitude}
+\section{Perpendicular Bisector}
+\input{chapters/triangle/perp-bisect}
+\section{Angle Bisector}
+\input{chapters/triangle/angle-bisect}
+%
+
+\end{document}
+
+ 
