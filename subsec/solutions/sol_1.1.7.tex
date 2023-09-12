@@ -1,0 +1,92 @@
+\solution 
+\\
+From the given values of $\vec{A},\vec{B},\vec{C}$,\\
+\begin{enumerate}
+
+\item Finding the value of angle A
+\begin{align}
+	\vec{B}-\vec{A} &=\myvec{6\\0}
+\end{align}
+and 
+\begin{align}
+	\vec{C}-\vec{A}&= \myvec{-1\\+2}
+\end{align}
+also calculating the values of norms
+\begin{align}
+	\norm{\vec{B}-\vec{A}} &= \sqrt{36} &= 6\\
+	\norm{\vec{C}-\vec{A}} &= \sqrt{5}
+\end{align}
+and by doing matrix multiplication we get,
+\begin{align}
+\begin{split}
+	(\vec{B}-\vec{A})^{\top}(\vec{C}-\vec{A})&=\myvec{6&0}\myvec{-1\\+2}\\
+	&=-6
+\end{split}
+\end{align}
+so 
+\begin{align}
+	\cos{A}&= \frac{-6}{6 \sqrt{5}}\\
+	&= \frac{-1}{\sqrt{5}}\\
+	\implies A&=\cos^{-1}{\frac{-1}{\sqrt{5}}}
+\end{align}
+
+
+
+
+\item Finding the value of angle B
+\begin{align}
+	\vec{C}-\vec{B} &=\myvec{-7\\2}
+\end{align}
+and 
+\begin{align}
+	\vec{A}-\vec{B}&= \myvec{-6\\0}
+\end{align}
+also calculating the values of norms
+\begin{align}
+	\norm{\vec{C}-\vec{B}} &= \sqrt{5}\\
+	\norm{\vec{A}-\vec{B}} &= \sqrt{53}
+\end{align}
+and by doing matrix multiplication we get,
+\begin{align}
+\begin{split}
+	(\vec{C}-\vec{B})^{\top}(\vec{A}-\vec{B})&=\myvec{-7&2}\myvec{-6\\0}\\
+	&= 42
+\end{split}
+\end{align}
+so 
+\begin{align}
+	\cos{B}&= \frac{42}{\sqrt{36} \sqrt{53}}\\
+	&= \frac{7}{\sqrt{53}}\\
+	\implies B&=\cos^{-1}{\frac{7}{\sqrt{53}}}
+\end{align}
+
+
+
+\item Finding the value of angle C
+\begin{align}
+	\vec{A}-\vec{C} &=\myvec{1\\-2}
+\end{align}
+and 
+\begin{align}
+	\vec{B}-\vec{C}&= \myvec{7\\-2}
+\end{align}
+also calculating the values of norms
+\begin{align}
+	\norm{\vec{A}-\vec{C}} &= \sqrt{5}\\
+	\norm{\vec{B}-\vec{C}} &= \sqrt{53}
+\end{align}
+and by doing matrix multiplication we get,
+\begin{align}
+\begin{split}
+	(\vec{A}-\vec{C})^{\top}(\vec{B}-\vec{C})&=\myvec{1&-2}\myvec{7\\-2}\\
+	&=11
+\end{split}
+\end{align}
+so 
+\begin{align}
+	\cos{C}&= \frac{11}{\sqrt{5} \sqrt{53}}\\
+	&= \frac{11}{\sqrt{265}}\\
+	\implies C&=\cos^{-1}{\frac{11}{\sqrt{265}}}
+\end{align}
+
+\end{enumerate}
