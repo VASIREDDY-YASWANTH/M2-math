@@ -6,7 +6,7 @@
 
 
 import sys                                          #for path to external scripts
-sys.path.insert(0,'/home/VASIREDDY-YASWANTH/github/geometry/codes/CoordGeo')        #path to my scripts
+sys.path.insert(0, '/home/VASIREDDY-YASWANTH/github/geometry/codes/CoordGeo') #path to my scripts
 import numpy as np
 import numpy.linalg as LA
 import matplotlib.pyplot as plt
@@ -26,12 +26,22 @@ import shlex
 #Triangle vertices
 A = np.array([-3,-5]).reshape(-1,1)
 B = np.array([3,-5]).reshape(-1,1) 
-C = np.array([-4,-3]).reshape(-1,1) 
+C = np.array([-4,-3]).reshape(-1,1)
+
+# Mid points
+#D = np.array([-0.5,-4]).reshape(-1,1)
+#E = np.array([-3.5,-4]).reshape(-1,1) 
+#F = np.array([0,-5]).reshape(-1,1) 
 
 #Triangle sides
 c = LA.norm(A-B)
 a = LA.norm(B-C)
 b = LA.norm(C-A)
+
+
+#d = LA.norm(A-D)
+#e = LA.norm(B-E)
+#f = LA.norm(C-F)
 print(a,b,c)
 
 #Direction Vectors
@@ -61,6 +71,11 @@ x_AB = line_gen(A,B)
 x_BC = line_gen(B,C)
 x_CA = line_gen(C,A)
 
+#Medians
+#x_AD = line_gen(A,D)
+#x_BE = line_gen(B,E)
+#x_CF = line_gen(C,F)
+
 
 
 #Plotting all lines
@@ -68,8 +83,12 @@ plt.plot(x_AB[0,:],x_AB[1,:],label='$AB$')
 plt.plot(x_BC[0,:],x_BC[1,:],label='$BC$')
 plt.plot(x_CA[0,:],x_CA[1,:],label='$CA$')
 
+#plt.plot(x_AD[0,:],x_AD[1,:],label='$AD$')
+#plt.plot(x_BE[0,:],x_BE[1,:],label='$BE$')
+#plt.plot(x_CF[0,:],x_CF[1,:],label='$CF$')
+
 #Labeling the coordinates
-tri_coords = np.block([[A,B,C]])
+tri_coords = np.block([[A,B,C,]])
 plt.scatter(tri_coords[0,:], tri_coords[1,:])
 vert_labels = ['A','B','C']
 for i, txt in enumerate(vert_labels):
@@ -85,7 +104,7 @@ plt.grid() # minor
 plt.axis('equal')
 
 #if using termux
-plt.savefig('figs/triangle/vector.pdf')
+plt.savefig('figs/triangle/vector1.pdf')
 #subprocess.run(shlex.split("termux-open ./figs/tri_sss.pdf"))
 #else
 plt.show()
