@@ -4,7 +4,7 @@ init_printing(use_unicode=True)
 from sympy.matrices import Matrix
 
 import sys                            
-sys.path.insert(0, '/home/gadepall/github/geometry/codes/CoordGeo')        #path to my scripts
+sys.path.insert(0, '/home/VASIREDDY-YASWANTH/github/geometry/codes/CoordGeo')        #path to my scripts
 import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
 
@@ -54,7 +54,7 @@ x_ccirc= circ_gen(O,radius)
 plt.plot(x_AB[0,:],x_AB[1,:],label='$AB$')
 plt.plot(x_BC[0,:],x_BC[1,:],label='$BC$')
 plt.plot(x_CA[0,:],x_CA[1,:],label='$CA$')
-plt.plot(x_OA[0,:],x_OA[1,:],label='$OA$')
+#plt.plot(x_OA[0,:],x_OA[1,:],label='$OA$')
 #Plotting line OG
 #plt.plot(x_OG[0,:],x_OG[1,:],label='$OG$')
 #Plotting lines OE and OF
@@ -62,21 +62,48 @@ plt.plot(x_OA[0,:],x_OA[1,:],label='$OA$')
 #plt.plot(x_OF[0,:],x_OF[1,:],label='$OF$')
 
 #Plotting the circumcircle
-plt.plot(x_ccirc[0,:],x_ccirc[1,:],label='$circumcircle$')
+#plt.plot(x_ccirc[0,:],x_ccirc[1,:],label='$circumcircle$')
+
+
+# Perpendicular bisector
+def line_dir_pt(m, A, k1=0, k2=1):
+    len = 10
+    dim = A.shape[0]
+    x_AB = np.zeros((dim, len))
+    lam_1 = np.linspace(k1, k2, len)
+    for i in range(len):
+        temp1 = A + lam_1[i] * m
+        x_AB[:, i] = temp1.T
+    return x_AB
+# Calculate the perpendicular vector and plot arrows
+def perpendicular(B, C, label):
+    perpendicular=norm_vec(B,C)
+    mid = midpoint(B, C)
+    x_D = line_dir_pt(perpendicular, mid, 0, 1)
+    plt.arrow(mid[0], mid[1], perpendicular[0], perpendicular[1], color='blue', head_width=0.4, head_length=0.4, label=label)
+    plt.arrow(mid[0], mid[1], -perpendicular[0], -perpendicular[1], color='blue', head_width=0.4, head_length=0.4)
+    return x_D
+x_D = perpendicular(A, B, 'OD')
+x_E = perpendicular(B, C, 'OE')
+x_F = perpendicular(C, A, 'OF')
+mid1 = midpoint(A, B)
+mid2 = midpoint(B, C)
+mid3 = midpoint(C, A)
 
 
 A = A.reshape(-1,1)
 B = B.reshape(-1,1)
 C = C.reshape(-1,1)
+D = D.reshape(-1,1)
 O = O.reshape(-1,1)
 G = G.reshape(-1,1)
 E = E.reshape(-1,1)
 F = F.reshape(-1,1)
 
 #Labeling the coordinates
-tri_coords = np.block([[A,B,C,O,G,E,F]])
+tri_coords = np.block([[A,B,C,O,D,E,F]])
 plt.scatter(tri_coords[0,:], tri_coords[1,:])
-vert_labels = ['A','B','C','O','G','E','F']
+vert_labels = ['A','B','C','O','D','E','F']
 for i, txt in enumerate(vert_labels):
     plt.annotate(txt, # this is the text
                  (tri_coords[0,i], tri_coords[1,i]), # this is the point to label
@@ -89,4 +116,4 @@ plt.ylabel('$y$')
 plt.legend(loc='best')
 plt.grid() 
 plt.axis('equal')
-plt.savefig('figs/triangle/perp_bisect5.png')
+plt.savefig('figs/triangle/perp_bisect1.png')
