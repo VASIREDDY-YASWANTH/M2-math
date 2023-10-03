@@ -1,5 +1,5 @@
 import sys                                          #for path to external scripts
-sys.path.insert(0, './CoordGeo')        #path to my scripts
+sys.path.insert(0, '/home/gadepall/github/geometry/codes/CoordGeo')        #path to my scripts
 import numpy as np
 import mpmath as mp
 import numpy.linalg as LA
@@ -160,5 +160,5 @@ plt.ylabel('$y$')
 plt.legend(loc='best')
 plt.grid() # minor
 plt.axis('equal')
-plt.savefig('perp-bisect.png')
+plt.savefig('figs/triangle/perp-bisect.png')
 plt.show()
