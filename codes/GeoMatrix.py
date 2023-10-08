@@ -7,7 +7,7 @@
 
 
 import sys                                          #for path to external scripts
-sys.path.insert(0, '/home/VASIREDDY_YASWANTH/github/geometry/codes/CoordGeo')        #path to my scripts
+sys.path.insert(0, './CoordGeo')        #path to my scripts
 import numpy as np
 import numpy.linalg as LA
 import scipy.linalg as SA
@@ -31,15 +31,15 @@ import shlex
 #-----------------Vectors-------------------------------
 
 #Input parameters from excel file
-df= pd.read_excel('tables/vertices.xlsx')
+df= pd.read_excel('vertices.xlsx')
 print(df ,"\n")
 
 #Triangle Vertices
 G_v= df.to_numpy()[:,:]
-print(G_v, C_m ,"\n")
 
 #Direction vector circulant matrix
 C_m= SA.circulant([1,0,-1]).T
+print(G_v, C_m ,"\n")
 
 
 #Direction vector Matrix
@@ -98,6 +98,8 @@ linmat_med = np.block([G_n_med.T,cmat_med])
 print(linmat_med ,"\n")
 
 #Find the centroid
+G_G=LA.lstsq(G_n_med.T,cmat_med)
+print("G_G=",G_G)
 #print(LA.lstsq(G_n_med.T,cmat_med),"\n")
 print("median ends")
 #-----------------Median Ends-------------------------------
@@ -121,8 +123,11 @@ linmat_alt= np.block([G_dir_alt.T,cmat_alt])
 print(linmat_alt,"\n")
 
 #Find the orthocentre
-print(LA.lstsq(G_dir_alt.T,cmat_alt))
+G_H=LA.lstsq(G_dir_alt.T,cmat_alt)
+#print(LA.lstsq(G_dir_alt.T,cmat_alt))
 print("altitude ends")
+
+
 #-----------------Altitude Ends-------------------------------
 
 #-----------------Perpendicular Bisector-------------------------------
@@ -132,20 +137,23 @@ print( np.block([G_dir_alt.T,cmat_perp_bis]))
 
 
 #Find the Circumcentre
+#G_O = A.lstsq(G_dir_alt.T,cmat_perp_bis)
+G_O = LA.lstsq(G_dir_alt.T, cmat_perp_bis, rcond=None)
+#print("G_O",G_O)
 #print("\n",A.lstsq(G_dir_alt.T,cmat_perp_bis))
 #-----------------Altitude Ends-------------------------------
 
 #-----------------Perpendicular Bisector-------------------------------
 #Incircle circulant matrix
 C_in = SA.circulant([1,1,0]).T
-print(C_in,"\n")
+#print(C_in,"\n")
 #m,n,p
 secvec = LA.inv(C_in)@dis
 cont_mat =np.array([np.block([secvec[1]/dis[1],secvec[0]/dis[2],0]), np.block([0, secvec[2]/dis[2],secvec[1]/dis[0]]),np.block([secvec[2]/dis[1],0,secvec[0]/dis[0]])])
-print(cont_mat,"\n")
+#print(cont_mat,"\n")
 #np.block(np.block([secvec[1]/dis[1],secvec[0]/dis[2],0]), np.block([0, secvec[2]/dis[2],secvec[1]/dis[0]]),np.block([secvec[2]/dis[1],0,secvec[0]/dis[0]]))
-print(np.array([np.block([secvec[1]/dis[1],secvec[0]/dis[2],0]), np.block([0, secvec[2]/dis[2],secvec[1]/dis[0]]),np.block([secvec[2]/dis[1],0,secvec[0]/dis[0]])]))
-cont_mat = np.array([secvec[1]/dis[1],secvec[0]/dis[2],0],dtype=object)
+#print(np.array([np.block([secvec[1]/dis[1],secvec[0]/dis[2],0]), np.block([0, secvec[2]/dis[2],secvec[1]/dis[0]]),np.block([secvec[2]/dis[1],0,secvec[0]/dis[0]])]))
+#cont_mat = np.array([secvec[1]/dis[1],secvec[0]/dis[2],0],dtype=object)
 print("\n",cont_mat)
 print("\n",secvec[1]/dis[0])
 print("\n",C_in,"\n","\n",C_in.T)
@@ -153,4 +161,82 @@ tvec = np.array([1,2,3]).reshape(-1,1)
 tC = SA.circulant([0,1,0])
 print("\n",tC,"\n",tvec)
 #print(tC@tvec)
+
+
+A = G_v[:, 0]
+B = G_v[:, 1]
+C = G_v[:, 2]
+D = G_mid[:, 0]
+E = G_mid[:, 1]
+F = G_mid[:, 2]
+G = G_G[0]
+H = G_H[0]
+O = G_O[0]
+print(A,B,C,D,E,F,G,H,O)
+
+
+A=A.reshape(-1,1)
+B=B.reshape(-1,1)
+C=C.reshape(-1,1)
+D=D.reshape(-1,1)
+E=E.reshape(-1,1)
+F=F.reshape(-1,1)
+G=G.reshape(-1,1)
+H=H.reshape(-1,1)
+print(A,B,C,D,E,F,G,H,O)
+
+radius = np.linalg.norm(A-O)
+#print("r=",r)
+
+#Generating the circumcirclecircle
+[O,r] = ccircle(A,B,C)
+x_ccirc= circ_gen(O,radius)
+
+
+#Generating all lines 
+x_AB = line_gen(A,B)
+x_BC = line_gen(B,C)
+x_CA = line_gen(C,A) 
+x_AD = line_gen(A,D)
+x_BE = line_gen(B,E)
+x_CF = line_gen(C,F)
+x_OA = line_gen(O,A)
+
+
+
+
+#Plotting all lines
+plt.plot(x_AB[0,:],x_AB[1,:],label='$AB$')
+plt.plot(x_BC[0,:],x_BC[1,:],label='$BC$')
+plt.plot(x_CA[0,:],x_CA[1,:],label='$CA$')
+plt.plot(x_AD[0,:],x_AD[1,:],label='$AD$')
+plt.plot(x_BE[0,:],x_BE[1,:],label='$BE$')
+plt.plot(x_CF[0,:],x_CF[1,:],label='$CF$')
+plt.plot(x_OA[0,:],x_OA[1,:],label='$OA$')
+#Plotting the circumcircle
+plt.plot(x_ccirc[0,:],x_ccirc[1,:],label='$circumcircle$')
+
+
+
+#Labeling the coordinates
+tri_coords = np.block([[A,B,C,D,E,F,G,H,O]])
+plt.scatter(tri_coords[0,:], tri_coords[1,:])
+vert_labels = ['A','B','C','D','E','F','G','H','O']
+for i, txt in enumerate(vert_labels):
+    plt.annotate(txt, # this is the text
+                 (tri_coords[0,i], tri_coords[1,i]), # this is the point to label
+                 textcoords="offset points", # how to position the text
+                 xytext=(0,10), # distance from text to points (x,y)
+                 ha='center') # horizontal alignment can be left, right or center
+plt.xlabel('$x$')
+plt.ylabel('$y$')
+plt.legend(loc='best')
+plt.grid() # minor
+plt.axis('equal')
+
+#if using termux
+plt.savefig('mat_median.png')
+#subprocess.run(shlex.split("termux-open ./figs/tri_sss.pdf"))
+#else
+plt.show()
 
