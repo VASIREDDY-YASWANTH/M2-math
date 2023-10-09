@@ -109,24 +109,24 @@ print("median ends")
 
 #Circulant matrix
 C_alt= SA.circulant([0,-1,1]).T
-print(C_alt ,"\n")
+#print(C_alt ,"\n")
 
 #Normal Matrix
 G_dir_alt = G_v@C_alt
-print(G_dir_alt,"\n")
+#print(G_dir_alt,"\n")
 
 #Find the line constants
 cmat_alt = np.diag(G_dir_alt.T@G_v).reshape(-1,1)
-print( np.block([G_dir_alt.T,cmat_alt]),"\n")
+#print( np.block([G_dir_alt.T,cmat_alt]),"\n")
 
 #altitude matrix
 linmat_alt= np.block([G_dir_alt.T,cmat_alt])
-print(linmat_alt,"\n")
+#print(linmat_alt,"\n")
 
 #Find the orthocentre
 G_H=LA.lstsq(G_dir_alt.T,cmat_alt)
-print(LA.lstsq(G_dir_alt.T,cmat_alt))
-print("altitude ends")
+#print(LA.lstsq(G_dir_alt.T,cmat_alt))
+#print("altitude ends")
 
 
 #-----------------Altitude Ends-------------------------------
@@ -180,17 +180,23 @@ cmat_iperp_bis= np.diag(G_idir_alt.T@G_imid).reshape(-1,1)
 G_iO = LA.lstsq(G_idir_alt.T, cmat_iperp_bis, rcond=None)
 
 
-
+#vertices
 A = G_v[:, 0]
 B = G_v[:, 1]
 C = G_v[:, 2]
+#midpoints
 D = G_mid[:, 0]
 E = G_mid[:, 1]
 F = G_mid[:, 2]
+#centroid
 G = G_G[0]
+#Orthocentre
 H = G_H[0]
+#circumcentre
 O = G_O[0]
+#incentre
 I = G_iO[0]
+#incircle contact points
 D3=G_incir[:,0]
 E3=G_incir[:,1]
 F3=G_incir[:,2]
@@ -229,7 +235,7 @@ def perpendicular(B, C, label):
     plt.arrow(mid[0], mid[1], -perpendicular[0], -perpendicular[1], color='blue', head_width=0.4, head_length=0.4)
     return x_D
 
-#Perpendicular Bisector
+# for Perpendicular Bisector
 #x_D = perpendicular(A, B, 'OD')
 #x_E = perpendicular(B, C, 'OE')
 #x_F = perpendicular(C, A, 'OF')
@@ -265,6 +271,7 @@ x_AD = line_gen(A,D)
 x_BE = line_gen(B,E)
 x_CF = line_gen(C,F)
 x_OA = line_gen(O,A)
+x_IF3= line_gen(I,F3)
 
 
 
@@ -273,20 +280,22 @@ x_OA = line_gen(O,A)
 plt.plot(x_AB[0,:],x_AB[1,:],label='$AB$')
 plt.plot(x_BC[0,:],x_BC[1,:],label='$BC$')
 plt.plot(x_CA[0,:],x_CA[1,:],label='$CA$')
-plt.plot(x_AD[0,:],x_AD[1,:],label='$AD$')
+#plt.plot(x_AD[0,:],x_AD[1,:],label='$AD$')
 #plt.plot(x_BE[0,:],x_BE[1,:],label='$BE$')
 #plt.plot(x_CF[0,:],x_CF[1,:],label='$CF$')
 #plt.plot(x_OA[0,:],x_OA[1,:],label='$OA$')
+plt.plot(x_IF3[0,:],x_IF3[1,:],label='$IF3$')
+
 #Plotting the circumcircle
 #plt.plot(x_ccirc[0,:],x_ccirc[1,:],label='$circumcircle$')
-#plt.plot(x_icirc[0,:],x_icirc[1,:],label='$incircle$')
+plt.plot(x_icirc[0,:],x_icirc[1,:],label='$incircle$')
 
 
 
 #Labeling the coordinates
-tri_coords = np.block([[A,B,C,D,E,F,D3,E3,F3,O,I]])
+tri_coords = np.block([[A,B,C,D3,E3,F3,I]])
 plt.scatter(tri_coords[0,:], tri_coords[1,:])
-vert_labels = ['A','B','C','D','E','F','D3','E3','F3','O','I']
+vert_labels = ['A','B','C','D3','E3','F3','I']
 for i, txt in enumerate(vert_labels):
     plt.annotate(txt, # this is the text
                  (tri_coords[0,i], tri_coords[1,i]), # this is the point to label
@@ -300,7 +309,7 @@ plt.grid() # minor
 plt.axis('equal')
 
 #if using termux
-plt.savefig('mat_alt1.png')
+plt.savefig('mat_ang2.png')
 #subprocess.run(shlex.split("termux-open ./figs/tri_sss.pdf"))
 #else
 plt.show()
