@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022/Debian) (preloaded format=pdflatex 2023.7.26)  8 OCT 2023 11:28
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022/Debian) (preloaded format=pdflatex 2023.7.26)  9 OCT 2023 17:18
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1395,6 +1395,17 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
  [1
 
 ]
+<figs/mat_vec1.png, id=89, 462.528pt x 346.896pt>
+File: figs/mat_vec1.png Graphic file (type png)
+<use figs/mat_vec1.png>
+Package pdftex.def Info: figs/mat_vec1.png  used on input line 37.
+(pdftex.def)             Requested size: 462.52686pt x 346.89514pt.
+
+Overfull \hbox (102.52686pt too wide) in paragraph at lines 37--38
+ [][] 
+ []
+
+
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
@@ -1412,7 +1423,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [3]
+ [3 <./figs/mat_vec1.png>]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
@@ -1449,12 +1460,18 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [7]
-Underfull \hbox (badness 10000) in paragraph at lines 166--167
+<figs/mat_med1.png, id=149, 462.528pt x 346.896pt>
+File: figs/mat_med1.png Graphic file (type png)
+<use figs/mat_med1.png>
+Package pdftex.def Info: figs/mat_med1.png  used on input line 127.
+(pdftex.def)             Requested size: 462.52686pt x 346.89514pt.
 
+Overfull \hbox (102.52686pt too wide) in paragraph at lines 127--128
+ [][] 
  []
 
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \vbox (badness 4634) has occurred while \output is active []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -1462,7 +1479,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [8]
+ [8 <./figs/mat_med1.png>]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
@@ -1472,6 +1489,11 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [9]
+Underfull \hbox (badness 10000) in paragraph at lines 177--178
+
+ []
+
+
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
@@ -1486,7 +1508,21 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
  [11]
+<figs/mat_med2.png, id=192, 462.528pt x 346.896pt>
+File: figs/mat_med2.png Graphic file (type png)
+<use figs/mat_med2.png>
+Package pdftex.def Info: figs/mat_med2.png  used on input line 215.
+(pdftex.def)             Requested size: 462.52686pt x 346.89514pt.
+
+Overfull \hbox (102.52686pt too wide) in paragraph at lines 215--216
+ [][] 
+ []
+
+
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
@@ -1504,8 +1540,92 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [13]
-Overfull \hbox (86.46127pt too wide) detected at line 303
+ [13 <./figs/mat_med2.png>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [14]
+<figs/mat_alt1.png, id=224, 462.528pt x 346.896pt>
+File: figs/mat_alt1.png Graphic file (type png)
+<use figs/mat_alt1.png>
+Package pdftex.def Info: figs/mat_alt1.png  used on input line 260.
+(pdftex.def)             Requested size: 462.52686pt x 346.89514pt.
+
+Overfull \hbox (102.52686pt too wide) in paragraph at lines 260--261
+ [][] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [15]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [16 <./figs/mat_alt1.png>]
+<figs/mat_perp1.png, id=238, 462.528pt x 346.896pt>
+File: figs/mat_perp1.png Graphic file (type png)
+<use figs/mat_perp1.png>
+Package pdftex.def Info: figs/mat_perp1.png  used on input line 279.
+(pdftex.def)             Requested size: 462.52686pt x 346.89514pt.
+
+Overfull \hbox (102.52686pt too wide) in paragraph at lines 279--280
+ [][] 
+ []
+
+
+Underfull \vbox (badness 4328) has occurred while \output is active []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [17 <./figs/mat_perp1.png>]
+<figs/mat_perp2.png, id=248, 462.528pt x 346.896pt>
+File: figs/mat_perp2.png Graphic file (type png)
+<use figs/mat_perp2.png>
+Package pdftex.def Info: figs/mat_perp2.png  used on input line 302.
+(pdftex.def)             Requested size: 462.52686pt x 346.89514pt.
+
+Overfull \hbox (102.52686pt too wide) in paragraph at lines 302--303
+ [][] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [18]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [19 <./figs/mat_perp2.png>]
+Overfull \hbox (86.46127pt too wide) detected at line 336
 []
  []
 
@@ -1518,25 +1638,63 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [14]
+ [20]
+<figs/mat_ang1.png, id=277, 462.528pt x 346.896pt>
+File: figs/mat_ang1.png Graphic file (type png)
+<use figs/mat_ang1.png>
+Package pdftex.def Info: figs/mat_ang1.png  used on input line 343.
+(pdftex.def)             Requested size: 462.52686pt x 346.89514pt.
+
+Overfull \hbox (102.52686pt too wide) in paragraph at lines 343--344
+ [][] 
+ []
+
+<figs/mat_ang2.png, id=278, 462.528pt x 346.896pt>
+File: figs/mat_ang2.png Graphic file (type png)
+<use figs/mat_ang2.png>
+Package pdftex.def Info: figs/mat_ang2.png  used on input line 349.
+(pdftex.def)             Requested size: 462.52686pt x 346.89514pt.
+
+Overfull \hbox (102.52686pt too wide) in paragraph at lines 349--350
+ [][] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [15]
-(./Geometry_matrix.aux)
+ [21]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [22 <./figs/mat_ang1.png>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [23 <./figs/mat_ang2.png>] (./Geometry_matrix.aux)
 Package rerunfilecheck Info: File `Geometry_matrix.out' has not changed.
 (rerunfilecheck)             Checksum: 5078488532A1B5FBB786758B0A1C454C;1337.
  ) 
 Here is how much of TeX's memory you used:
- 33069 strings out of 476091
- 640758 string characters out of 5794081
- 1874330 words of memory out of 5000000
- 52576 multiletter control sequences out of 15000+600000
+ 33154 strings out of 476091
+ 642227 string characters out of 5794081
+ 1873330 words of memory out of 5000000
+ 52635 multiletter control sequences out of 15000+600000
  524128 words of font info for 77 fonts, out of 8000000 for 9000
  1144 hyphenation exceptions out of 8191
- 218i,18n,217p,1201b,579s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 218i,18n,217p,1201b,594s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/share/texli
@@ -1549,10 +1707,10 @@ msfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
 cm/cmssbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
 msy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.p
 fb>
-Output written on Geometry_matrix.pdf (17 pages, 155819 bytes).
+Output written on Geometry_matrix.pdf (25 pages, 287093 bytes).
 PDF statistics:
- 318 PDF objects out of 1000 (max. 8388607)
- 272 compressed objects within 3 object streams
- 118 named destinations out of 1000 (max. 500000)
- 109 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 381 PDF objects out of 1000 (max. 8388607)
+ 310 compressed objects within 4 object streams
+ 134 named destinations out of 1000 (max. 500000)
+ 149 words of extra memory for PDF output out of 10000 (max. 10000000)
 

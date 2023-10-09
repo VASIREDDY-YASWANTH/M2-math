@@ -32,7 +32,12 @@ The matrix of the veritices of the triangle is defined as
 			\vec{P} &= \myvec{\vec{A} & \vec{B} &\vec{C}} \\
             &=\myvec{-3 & 3 & -4 \\ -5 & -5 & -3}
 		\end{align}
-
+\begin{figure}[H]
+    \centering
+    \includegraphics{figs/mat_vec1.png}
+    \caption{$\triangle$ ABC}
+    \label{fig:mat_vec1}
+\end{figure}
 \subsection{Vectors}
 
 
@@ -117,6 +122,12 @@ Using matrix multiplication
 \begin{align}
     \myvec{\vec{D} & \vec{E} &\vec{F}} &= \myvec{\frac{-1}{2} & \frac{-7}{2} & 0 \\ -4 & -4 & -5}
 \end{align}
+\begin{figure}[H]
+    \centering
+    \includegraphics{figs/mat_med1.png}
+    \caption{mid-points}
+    \label{fig:mat_med1}
+\end{figure}
 %Question 1.6.2.2
 \item Obtain the median direction matrix. \\
 \solution The median direction matrix is given by 
@@ -199,7 +210,12 @@ Using Gauss-Elimination method:
 \augvec{2}{1}{ 1 & 0 & \frac{-4}{3} \\ 0 & 1 & \frac{-13}{3} \\ 0 & 0 & 0} \\
  \text{Therefore } \vec{G}=\myvec { \frac{-4}{3} \\ \frac{-13}{3}}
 \end{align} 
-
+\begin{figure}[H]
+    \centering
+    \includegraphics{figs/mat_med2.png}
+    \caption{centroid of triangle ABC}
+    \label{fig:mat_med2}
+\end{figure}
 \end{enumerate}
 
 
@@ -239,6 +255,12 @@ Using matrix multiplication
  \vec{c}_2   &= \myvec{ -11 & -13 & 24}
 \end{align}
 \end{enumerate}
+\begin{figure}[H]
+    \centering
+    \includegraphics{figs/mat_alt1.png}
+    \caption{Ortho centre of $\triangle$ ABC}
+    \label{fig:mat_alt1}
+\end{figure}
 
 
 \subsection{Perpendicular Bisector}
@@ -252,6 +274,12 @@ Using matrix multiplication
 \begin{align}
        \vec{M}_2 &=\myvec{7 & -1 & -6 \\ -2 & 2 & 0}
 \end{align}
+\begin{figure}[H]
+    \centering
+    \includegraphics{figs/mat_perp1.png}
+    \caption{plot of perpendicular bisectors}
+    \label{fig:mat_perp1}
+\end{figure}
 %Question 1.6.4.2
 \item Find the constants vector for the perpendicular bisectors. \\
 \solution The desired vector is 
@@ -269,7 +297,12 @@ Using matrix multiplication
     \vec{c}_3 &= \text{diag}\brak{ \myvec{ \frac{9}{2} & \frac{-33}{2} & 10 \\ \frac{-15}{2} & \frac{-9}{2} & -10 \\ 3 & 21 & 0 } } \\
  \vec{c}_3   &= \myvec{ \frac{9}{2} & \frac{-9}{2} & 0}
 \end{align}
-
+\begin{figure}[H]
+    \centering
+    \includegraphics{figs/mat_perp2.png}
+    \caption{circumcentre and circumcircle of $\triangle$ ABC}
+    \label{fig:mat_perp2}
+\end{figure}
 \end{enumerate}
 
 
@@ -291,21 +324,32 @@ Using matrix multiplication
 = 	\myvec{\vec{A} & \vec{B} &\vec{C}}\myvec{\frac{n}{b} & \frac{m}{c} & 0\\0 & \frac{p}{c} & \frac{n}{a} \\\frac{p}{b} & 0 & \frac{m}{a}}
 \end{align}
 \begin{align}
-    \myvec{\vec{p} & \vec{ m} & \vec{n} } &=\frac{1}{2} \myvec{\vec{a} & \vec{b} & \vec{c}} \myvec{ -1 & 1 & 1 \\1 & -1 & 1 \\1 & 1 & -1 } \\
-   &= \frac{1}{2}\myvec{ 6&  \sqrt{53} & \sqrt{5} }\myvec{ -1 & 1 & 1 \\1 & -1 & 1 \\1 & 1 & -1 }  \\
-   &= \frac{1}{2}\myvec{ 6&  7.280109889 & 2.236067977 }\myvec{ -1 & 1 & 1 \\1 & -1 & 1 \\1 & 1 & -1 }
+    \myvec{\vec{p} & \vec{m} & \vec{n} } &=\frac{1}{2} \myvec{\vec{a} & \vec{b} & \vec{c}} \myvec{ -1 & 1 & 1 \\1 & -1 & 1 \\1 & 1 & -1 } \\
+   &= \frac{1}{2}\myvec{ \sqrt{53}&  \sqrt{5} & 6 }\myvec{ -1 & 1 & 1 \\1 & -1 & 1 \\1 & 1 & -1 }  \\
+   &= \frac{1}{2}\myvec{ 7.280109889&  2.236067977 & 6 }\myvec{ -1 & 1 & 1 \\1 & -1 & 1 \\1 & 1 & -1 }
 \end{align}
 Using matrix multiplication 
 \begin{align}
-        \myvec{\vec{p} & \vec{ m} & \vec{n} } &= \myvec{ 1.758088933 &  0.4479790441& 5.522020956 }   \\
+        \myvec{\vec{p} & \vec{m} & \vec{n} } &= \myvec{  0.4479790441& 5.522020956 & 1.758088933 }   \\
 \myvec{\vec{A} & \vec{B} &\vec{C}}\myvec{\frac{n}{b} & \frac{m}{c} & 0\\0 & \frac{p}{c} & \frac{n}{a} \\\frac{p}{b} & 0 & \frac{m}{a}} 
-  &= \myvec{-3 & 3 & -4 \\ -5 & -5 & -3} \myvec{\frac{5.522020956}{\sqrt{53}} & \frac{0.4479790441}{\sqrt{5}} & 0\\0 & \frac{1.758088933}{\sqrt{5}} & \frac{5.522020956}{6} \\\frac{1.758088933}{\sqrt{53}} & 0 & \frac{0.4479790441}{6}}
+  &= \myvec{-3 & 3 & -4 \\ -5 & -5 & -3} \myvec{\frac{1.758088933}{\sqrt{5}} & \frac{5.522020956}{6} & 0\\0 & \frac{0.4479790441}{6} & \frac{1.758088933}{\sqrt{53}} \\\frac{0.4479790441}{\sqrt{5}} & 0 & \frac{5.522020956}{\sqrt{53}}}
 \end{align}
 Using matrix multiplication We get the points of contact 
 \begin{align}
-    &= \myvec{ -3.24149209 & 1.71744762 & 2.44235781 \\ -4.51701582& -5 & -4.84067366 }
+    &= \myvec{ -3.21375873 & -3.21375873 & -2.30955539 \\ -4.4.57248255 & -5 & -3.48298417 }
 \end{align}
-
+\begin{figure}[H]
+    \centering
+    \includegraphics{figs/mat_ang1.png}
+    \caption{Contact points of incircle of $triangle$ ABC}
+    \label{fig:mat_ang1}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics{figs/mat_ang2.png}
+    \caption{Incircle and Incentre of $\triangle$ ABC }
+    \label{fig:mat_ang2}
+\end{figure}
 \end{enumerate}
 
 

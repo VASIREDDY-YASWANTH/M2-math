@@ -5,8 +5,8 @@
 \contentsline {section}{\numberline {1.4}Perpendicular Bisector}{2}{section.1.4}%
 \contentsline {section}{\numberline {1.5}Angular Bisector}{2}{section.1.5}%
 \contentsline {section}{\numberline {1.6}Matrix}{2}{section.1.6}%
-\contentsline {subsection}{\numberline {1.6.1}Vectors}{2}{subsection.1.6.1}%
-\contentsline {subsection}{\numberline {1.6.2}Median}{6}{subsection.1.6.2}%
-\contentsline {subsection}{\numberline {1.6.3}Altitude}{11}{subsection.1.6.3}%
-\contentsline {subsection}{\numberline {1.6.4}Perpendicular Bisector}{12}{subsection.1.6.4}%
-\contentsline {subsection}{\numberline {1.6.5}Angle Bisector}{14}{subsection.1.6.5}%
+\contentsline {subsection}{\numberline {1.6.1}Vectors}{3}{subsection.1.6.1}%
+\contentsline {subsection}{\numberline {1.6.2}Median}{7}{subsection.1.6.2}%
+\contentsline {subsection}{\numberline {1.6.3}Altitude}{14}{subsection.1.6.3}%
+\contentsline {subsection}{\numberline {1.6.4}Perpendicular Bisector}{17}{subsection.1.6.4}%
+\contentsline {subsection}{\numberline {1.6.5}Angle Bisector}{20}{subsection.1.6.5}%
