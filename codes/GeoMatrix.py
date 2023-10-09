@@ -102,31 +102,31 @@ linmat_med = np.block([G_n_med.T,cmat_med])
 G_G=LA.lstsq(G_n_med.T,cmat_med)
 #print("G_G=",G_G)
 #print(LA.lstsq(G_n_med.T,cmat_med),"\n")
-#print("median ends")
+print("median ends")
 #-----------------Median Ends-------------------------------
 
 #-----------------Altitude-------------------------------
 
 #Circulant matrix
 C_alt= SA.circulant([0,-1,1]).T
-#print(C_alt ,"\n")
+print(C_alt ,"\n")
 
 #Normal Matrix
 G_dir_alt = G_v@C_alt
-#print(G_dir_alt,"\n")
+print(G_dir_alt,"\n")
 
 #Find the line constants
 cmat_alt = np.diag(G_dir_alt.T@G_v).reshape(-1,1)
-#print( np.block([G_dir_alt.T,cmat_alt]),"\n")
+print( np.block([G_dir_alt.T,cmat_alt]),"\n")
 
 #altitude matrix
 linmat_alt= np.block([G_dir_alt.T,cmat_alt])
-#print(linmat_alt,"\n")
+print(linmat_alt,"\n")
 
 #Find the orthocentre
 G_H=LA.lstsq(G_dir_alt.T,cmat_alt)
 print(LA.lstsq(G_dir_alt.T,cmat_alt))
-#print("altitude ends")
+print("altitude ends")
 
 
 #-----------------Altitude Ends-------------------------------
@@ -194,8 +194,45 @@ I = G_iO[0]
 D3=G_incir[:,0]
 E3=G_incir[:,1]
 F3=G_incir[:,2]
-print("A=",A,"B=",B,"C=",C,"D=",D,"E=",E,"F=",F,"G=",G,"H=",H,"I=",I,"O=",O,"D3=",D3,"E3=",E3,"F3=",F3)
+#print("A=",A,"B=",B,"C=",C,"D=",D,"E=",E,"F=",F,"G=",G,"H=",H,"I=",I,"O=",O,"D3=",D3,"E3=",E3,"F3=",F3)
 
+def midpoint(P, Q):
+    return (P + Q) / 2  
+#normal vector 
+def norm_vec(A,B):
+  omat = np.array([[0,1],[-1,0]]) 
+  return omat.T@(A-B)
+#to find the coefficients and constant of the equation of perpendicular bisector of BC
+def perpendicular_bisector(B, C):
+    midBC=midpoint(B,C)
+    dir=B-C
+    constant = -dir.T @ midBC
+    return dir,constant
+equation_coeff1,const1 = perpendicular_bisector(A, B)
+equation_coeff2,const2 = perpendicular_bisector(B, C)
+equation_coeff3,const3 = perpendicular_bisector(C, A)
+def line_dir_pt(m, A, k1=0, k2=1):
+    len = 10
+    dim = A.shape[0]
+    x_AB = np.zeros((dim, len))
+    lam_1 = np.linspace(k1, k2, len)
+    for i in range(len):
+        temp1 = A + lam_1[i] * m
+        x_AB[:, i] = temp1.T
+    return x_AB
+# Calculate the perpendicular vector and plot arrows
+def perpendicular(B, C, label):
+    perpendicular=norm_vec(B,C)
+    mid = midpoint(B, C)
+    x_D = line_dir_pt(perpendicular, mid, 0, 1)
+    plt.arrow(mid[0], mid[1], perpendicular[0], perpendicular[1], color='blue', head_width=0.4, head_length=0.4, label=label)
+    plt.arrow(mid[0], mid[1], -perpendicular[0], -perpendicular[1], color='blue', head_width=0.4, head_length=0.4)
+    return x_D
+
+#Perpendicular Bisector
+#x_D = perpendicular(A, B, 'OD')
+#x_E = perpendicular(B, C, 'OE')
+#x_F = perpendicular(C, A, 'OF')
 
 A=A.reshape(-1,1)
 B=B.reshape(-1,1)
@@ -208,7 +245,7 @@ H=H.reshape(-1,1)
 D3=D3.reshape(-1,1)
 E3=E3.reshape(-1,1)
 F3=F3.reshape(-1,1)
-print("A=",A,"B=",B,"C=",C,"D=",D,"E=",E,"F=",F,"G=",G,"H=",H,"O=",O,"D3=",D3,"E3=",E3,"F3=",F3)
+#print("A=",A,"B=",B,"C=",C,"D=",D,"E=",E,"F=",F,"G=",G,"H=",H,"O=",O,"D3=",D3,"E3=",E3,"F3=",F3)
 
 radius = np.linalg.norm(A-O)
 iradius=np.linalg.norm(D3-I)
@@ -241,8 +278,8 @@ plt.plot(x_AD[0,:],x_AD[1,:],label='$AD$')
 #plt.plot(x_CF[0,:],x_CF[1,:],label='$CF$')
 #plt.plot(x_OA[0,:],x_OA[1,:],label='$OA$')
 #Plotting the circumcircle
-plt.plot(x_ccirc[0,:],x_ccirc[1,:],label='$circumcircle$')
-plt.plot(x_icirc[0,:],x_icirc[1,:],label='$incircle$')
+#plt.plot(x_ccirc[0,:],x_ccirc[1,:],label='$circumcircle$')
+#plt.plot(x_icirc[0,:],x_icirc[1,:],label='$incircle$')
 
 
 
