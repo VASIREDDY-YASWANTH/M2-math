@@ -36,6 +36,7 @@ df= pd.read_excel('vertices.xlsx')
 
 #Triangle Vertices
 G_v= df.to_numpy()[:,:]
+print(G_v)
 
 #Direction vector circulant matrix
 C_m= SA.circulant([1,0,-1]).T
@@ -149,14 +150,19 @@ C_in = SA.circulant([1,1,0]).T
 #print("c_in=",C_in,"\n")
 #m,n,p
 secvec = LA.inv(C_in)@dis
-cont_mat =np.array([np.block([secvec[1]/dis[1],secvec[0]/dis[2],0]), np.block([0, secvec[2]/dis[2],secvec[1]/dis[0]]),np.block([secvec[2]/dis[1],0,secvec[0]/dis[0]])])
+print(secvec)
+#orignal
+#cont_mat =np.array([np.block([secvec[1]/dis[1],secvec[0]/dis[2],0]), np.block([0, secvec[2]/dis[2],secvec[1]/dis[0]]),np.block([secvec[2]/dis[1],0,secvec[0]/dis[0]])])
+#my
+cont_mat =np.array([np.block([secvec[2]/dis[2],secvec[1]/dis[0],0]), np.block([0, secvec[0]/dis[0],secvec[2]/dis[1]]),np.block([secvec[0]/dis[2],0,secvec[1]/dis[1]])])
+
 G_incir = G_v @ cont_mat
-#print("incircle=" ,G_incir)
-#print(cont_mat,"\n")
+print("incircle=" ,G_incir)
+print(cont_mat,"\n")
 #np.block(np.block([secvec[1]/dis[1],secvec[0]/dis[2],0]), np.block([0, secvec[2]/dis[2],secvec[1]/dis[0]]),np.block([secvec[2]/dis[1],0,secvec[0]/dis[0]]))
 #print(np.array([np.block([secvec[1]/dis[1],secvec[0]/dis[2],0]), np.block([0, secvec[2]/dis[2],secvec[1]/dis[0]]),np.block([secvec[2]/dis[1],0,secvec[0]/dis[0]])]))
 cont_mat = np.array([secvec[1]/dis[1],secvec[0]/dis[2],0],dtype=object)
-#print("\n",cont_mat)
+print("\n",cont_mat)
 #print("\n",secvec[1]/dis[0])
 #print("\n",C_in,"\n","\n",C_in.T)
 tvec = np.array([1,2,3]).reshape(-1,1)
@@ -164,7 +170,14 @@ tC = SA.circulant([0,1,0])
 #print("\n",tC,"\n",tvec)
 #print(tC@tvec)
 
-
+#for Incentre
+G_iv= G_incir
+C_imid = SA.circulant([0,1,1]).T
+G_imid = 0.5*G_iv@C_imid
+C_ialt= SA.circulant([0,-1,1]).T
+G_idir_alt = G_iv@C_ialt
+cmat_iperp_bis= np.diag(G_idir_alt.T@G_imid).reshape(-1,1)
+G_iO = LA.lstsq(G_idir_alt.T, cmat_iperp_bis, rcond=None)
 
 
 
@@ -177,10 +190,11 @@ F = G_mid[:, 2]
 G = G_G[0]
 H = G_H[0]
 O = G_O[0]
+I = G_iO[0]
 D3=G_incir[:,0]
 E3=G_incir[:,1]
 F3=G_incir[:,2]
-print("A=",A,"B=",B,"C=",C,"D=",D,"E=",E,"F=",F,"G=",G,"H=",H,"O=",O,"D3=",D3,"E3=",E3,"F3=",F3)
+print("A=",A,"B=",B,"C=",C,"D=",D,"E=",E,"F=",F,"G=",G,"H=",H,"I=",I,"O=",O,"D3=",D3,"E3=",E3,"F3=",F3)
 
 
 A=A.reshape(-1,1)
@@ -197,11 +211,13 @@ F3=F3.reshape(-1,1)
 print("A=",A,"B=",B,"C=",C,"D=",D,"E=",E,"F=",F,"G=",G,"H=",H,"O=",O,"D3=",D3,"E3=",E3,"F3=",F3)
 
 radius = np.linalg.norm(A-O)
-#print("r=",r)
+iradius=np.linalg.norm(D3-I)
 
 #Generating the circumcirclecircle
 [O,r] = ccircle(A,B,C)
 x_ccirc= circ_gen(O,radius)
+[I,ir] = ccircle(D3,E3,F3)
+x_icirc= circ_gen(I,iradius)
 
 
 #Generating all lines 
@@ -225,14 +241,15 @@ plt.plot(x_AD[0,:],x_AD[1,:],label='$AD$')
 #plt.plot(x_CF[0,:],x_CF[1,:],label='$CF$')
 #plt.plot(x_OA[0,:],x_OA[1,:],label='$OA$')
 #Plotting the circumcircle
-#plt.plot(x_ccirc[0,:],x_ccirc[1,:],label='$circumcircle$')
+plt.plot(x_ccirc[0,:],x_ccirc[1,:],label='$circumcircle$')
+plt.plot(x_icirc[0,:],x_icirc[1,:],label='$incircle$')
 
 
 
 #Labeling the coordinates
-tri_coords = np.block([[A,B,C,D]])
+tri_coords = np.block([[A,B,C,D,E,F,D3,E3,F3,O,I]])
 plt.scatter(tri_coords[0,:], tri_coords[1,:])
-vert_labels = ['A','B','C','D',]
+vert_labels = ['A','B','C','D','E','F','D3','E3','F3','O','I']
 for i, txt in enumerate(vert_labels):
     plt.annotate(txt, # this is the text
                  (tri_coords[0,i], tri_coords[1,i]), # this is the point to label
