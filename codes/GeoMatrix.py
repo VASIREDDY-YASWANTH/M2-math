@@ -29,38 +29,38 @@ import shlex
 
 
 #-----------------Vectors-------------------------------
-
+print("vectors begin","\n")
 #Input parameters from excel file
 df= pd.read_excel('vertices.xlsx')
 #print(df ,"\n")
 
 #Triangle Vertices
 G_v= df.to_numpy()[:,:]
-print(G_v)
+print("G_v=",G_v,"\n")
 
 #Direction vector circulant matrix
 C_m= SA.circulant([1,0,-1]).T
-#print(G_v, C_m ,"\n")
+print("C_m=", C_m ,"\n")
 
 
 #Direction vector Matrix
 G_dir = G_v@C_m
-#print(G_dir,"\n")
+print("G_dir=",G_dir,"\n")
 
 #Normal vector matrix
 G_n = R_o@G_v@C_m
-#print(G_n,"\n")
+print("G_n=",G_n,"\n")
 
 #Find the line constants
 cmat = np.diag(G_n.T@G_v).reshape(-1,1)
 
 #line matrix
 linmat = np.block([G_n.T,cmat])
-#print(linmat,"\n")
+print("linmat=",linmat,"\n")
 
 #sides vector
 dis = np.linalg.norm(G_dir, axis=0).reshape(-1,1)
-#print(dis,"\n")
+print("dis=",dis,"\n")
 
 '''
 #Finding the angles of the triangle
@@ -69,100 +69,103 @@ G_dnorm = G_dir@dmat
 G_dgram = G_dnorm.T@G_dnorm
 #print(np.degrees(np.arccos(G_dgram)))
 '''
-#print("vector ends")
+print("vector ends","\n")
 #-----------------Vectors Ends-------------------------------
 
 #-----------------Medians-------------------------------
+print("Medians begin","\n")
 #Median circulant matrix
 C_mid = SA.circulant([0,1,1]).T
-#print(C_mid,"\n")
+print("C_mid=",C_mid,"\n")
 
 #Mid point matrix
 G_mid = 0.5*G_v@C_mid
-#print(G_mid,"\n")
+print("G_mid=",G_mid,"\n")
 
 #Median direction circulant matrix
 C_mid_dir = SA.circulant([1,-0.5,-0.5])
 
 #Median direction matrix
 G_med_dir = G_v @ C_mid_dir
-#print(G_med_dir,"\n")
+print("G_med_dir=",G_med_dir,"\n")
 
 #Normal vector matrix
 G_n_med = R_o@G_med_dir
-
+print("G_n_med=",G_n_med,"\n") 
 #Find the line constants
 cmat_med = np.diag(G_n_med.T@G_v).reshape(-1,1)
 
 #median  matrix
 linmat_med = np.block([G_n_med.T,cmat_med])
-#print(linmat_med ,"\n")
+print("linemat_med=",linmat_med ,"\n")
 
 #Find the centroid
-G_G=LA.lstsq(G_n_med.T,cmat_med)
-#print("G_G=",G_G)
+G_G=LA.lstsq(G_n_med.T,cmat_med,rcond=None)
+print("G_G=",G_G,"\n")
 #print(LA.lstsq(G_n_med.T,cmat_med),"\n")
-print("median ends")
+print("median ends","\n")
 #-----------------Median Ends-------------------------------
 
 #-----------------Altitude-------------------------------
-
+print("Altitude begins","\n")
 #Circulant matrix
 C_alt= SA.circulant([0,-1,1]).T
-#print(C_alt ,"\n")
+print("C_alt=",C_alt ,"\n")
 
 #Normal Matrix
 G_dir_alt = G_v@C_alt
-#print(G_dir_alt,"\n")
+print("G_dir_alt=",G_dir_alt,"\n")
 
 #Find the line constants
 cmat_alt = np.diag(G_dir_alt.T@G_v).reshape(-1,1)
-#print( np.block([G_dir_alt.T,cmat_alt]),"\n")
+print( np.block([G_dir_alt.T,cmat_alt]),"\n")
 
 #altitude matrix
 linmat_alt= np.block([G_dir_alt.T,cmat_alt])
-#print(linmat_alt,"\n")
+print("linemat_alt",linmat_alt,"\n")
 
 #Find the orthocentre
-G_H=LA.lstsq(G_dir_alt.T,cmat_alt)
-#print(LA.lstsq(G_dir_alt.T,cmat_alt))
-#print("altitude ends")
+G_H=LA.lstsq(G_dir_alt.T,cmat_alt,rcond=None)
+print("G_H=",G_H,"\n")
+print("altitude ends","\n")
 
 
 #-----------------Altitude Ends-------------------------------
 
 #-----------------Perpendicular Bisector-------------------------------
+print("perpendicular bisector begins","\n")
 #Find the line constants
 cmat_perp_bis= np.diag(G_dir_alt.T@G_mid).reshape(-1,1)
-#print( np.block([G_dir_alt.T,cmat_perp_bis]))
+print( np.block([G_dir_alt.T,cmat_perp_bis]))
 
 
 #Find the Circumcentre
 #G_O = A.lstsq(G_dir_alt.T,cmat_perp_bis)
 G_O = LA.lstsq(G_dir_alt.T, cmat_perp_bis, rcond=None)
-#print("G_O",G_O)
+print("G_O=",G_O,"\n")
 #print("\n",A.lstsq(G_dir_alt.T,cmat_perp_bis))
-#-----------------Altitude Ends-------------------------------
+print("Perpendicular bisector ends","\n")
+#-----------------Perpendicular Bisector  Ends-------------------------------
 
-#-----------------Perpendicular Bisector-------------------------------
+#-----------------Angular Bisector-------------------------------
+print("Angular bisector begins","\n")
 #Incircle circulant matrix
 C_in = SA.circulant([1,1,0]).T
-#print("c_in=",C_in,"\n")
+print("c_in=",C_in,"\n")
 #m,n,p
 secvec = LA.inv(C_in)@dis
-print(secvec)
+print("secvec",secvec,"\n")
 #orignal
 #cont_mat =np.array([np.block([secvec[1]/dis[1],secvec[0]/dis[2],0]), np.block([0, secvec[2]/dis[2],secvec[1]/dis[0]]),np.block([secvec[2]/dis[1],0,secvec[0]/dis[0]])])
 #my
 cont_mat =np.array([np.block([secvec[2]/dis[2],secvec[1]/dis[0],0]), np.block([0, secvec[0]/dis[0],secvec[2]/dis[1]]),np.block([secvec[0]/dis[2],0,secvec[1]/dis[1]])])
-
+print("cont_mat",cont_mat,"\n")
 G_incir = G_v @ cont_mat
 print("incircle=" ,G_incir)
-print(cont_mat,"\n")
 #np.block(np.block([secvec[1]/dis[1],secvec[0]/dis[2],0]), np.block([0, secvec[2]/dis[2],secvec[1]/dis[0]]),np.block([secvec[2]/dis[1],0,secvec[0]/dis[0]]))
 #print(np.array([np.block([secvec[1]/dis[1],secvec[0]/dis[2],0]), np.block([0, secvec[2]/dis[2],secvec[1]/dis[0]]),np.block([secvec[2]/dis[1],0,secvec[0]/dis[0]])]))
-cont_mat = np.array([secvec[1]/dis[1],secvec[0]/dis[2],0],dtype=object)
-print("\n",cont_mat)
+#cont_mat = np.array([secvec[1]/dis[1],secvec[0]/dis[2],0],dtype=object)
+#print("\n",cont_mat)
 #print("\n",secvec[1]/dis[0])
 #print("\n",C_in,"\n","\n",C_in.T)
 tvec = np.array([1,2,3]).reshape(-1,1)
@@ -178,6 +181,9 @@ C_ialt= SA.circulant([0,-1,1]).T
 G_idir_alt = G_iv@C_ialt
 cmat_iperp_bis= np.diag(G_idir_alt.T@G_imid).reshape(-1,1)
 G_iO = LA.lstsq(G_idir_alt.T, cmat_iperp_bis, rcond=None)
+print("Angular bisector ends","\n")
+
+#------------------------------Angular Bisector Ends-------------------------------
 
 
 #vertices
@@ -200,7 +206,7 @@ I = G_iO[0]
 D3=G_incir[:,0]
 E3=G_incir[:,1]
 F3=G_incir[:,2]
-#print("A=",A,"B=",B,"C=",C,"D=",D,"E=",E,"F=",F,"G=",G,"H=",H,"I=",I,"O=",O,"D3=",D3,"E3=",E3,"F3=",F3)
+print("\n","A=",A,"B=",B,"C=",C,"D=",D,"E=",E,"F=",F,"G=",G,"H=",H,"I=",I,"O=",O,"D3=",D3,"E3=",E3,"F3=",F3)
 
 def midpoint(P, Q):
     return (P + Q) / 2  
@@ -313,4 +319,3 @@ plt.savefig('mat_ang2.png')
 #subprocess.run(shlex.split("termux-open ./figs/tri_sss.pdf"))
 #else
 plt.show()
-
