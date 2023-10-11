@@ -184,7 +184,7 @@ G_iO = LA.lstsq(G_idir_alt.T, cmat_iperp_bis, rcond=None)
 print("Angular bisector ends","\n")
 
 #i_cont_mat =np.array([np.block([-1,secvec[2]/dis[2],secvec[1]/dis[0]]), np.block([ secvec[2]/dis[1],-1,secvec[0]/dis[0]]),np.block([secvec[1]/dis[1],secvec[0]/dis[2],-1])])
-i_cont_mat =np.array([np.block([-1,secvec[2]/dis[2],secvec[1]/dis[0]]), np.block([ secvec[2]/dis[1],-1,secvec[0]/dis[0]]),np.block([secvec[1]/dis[1],secvec[0]/dis[2],-1])])
+i_cont_mat =np.array([np.block([secvec[2]/dis[2],secvec[1]/dis[0],-1]), np.block([ -1,secvec[0]/dis[0],secvec[2]/dis[1]]),np.block([secvec[0]/dis[2],-1,secvec[1]/dis[1],-1])])
 i_circ_dir=G_v@i_cont_mat
 i_circ_nor=R_o@i_circ_dir
 i_circ_cof=np.diag(i_circ_nor.T@G_v).reshape(-1,1)
