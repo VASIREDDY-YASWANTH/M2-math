@@ -312,7 +312,7 @@ plt.plot(x_CA[0,:],x_CA[1,:],label='$CA$')
 #plt.plot(x_BE[0,:],x_BE[1,:],label='$BE$')
 #plt.plot(x_CF[0,:],x_CF[1,:],label='$CF$')
 #plt.plot(x_OA[0,:],x_OA[1,:],label='$OA$')
-plt.plot(x_IF3[0,:],x_IF3[1,:],label='$IF3$')
+#plt.plot(x_IF3[0,:],x_IF3[1,:],label='$IF3$')
 plt.plot(x_AD3[0,:],x_AD3[1,:],'--',label='$AD3$')
 plt.plot(x_BE3[0,:],x_BE3[1,:],'--',label='$BE3$')
 plt.plot(x_CF3[0,:],x_CF3[1,:],'--',label='$CF3$')
@@ -341,7 +341,7 @@ plt.grid() # minor
 plt.axis('equal')
 
 #if using termux
-plt.savefig('mat_ang2.png')
+plt.savefig('incentre.png')
 #subprocess.run(shlex.split("termux-open ./figs/tri_sss.pdf"))
 #else
 plt.show()
