@@ -180,15 +180,20 @@ G_imid = 0.5*G_iv@C_imid
 C_ialt= SA.circulant([0,-1,1]).T
 G_idir_alt = G_iv@C_ialt
 cmat_iperp_bis= np.diag(G_idir_alt.T@G_imid).reshape(-1,1)
+print (cmat_iperp_bis,"\n")
 G_iO = LA.lstsq(G_idir_alt.T, cmat_iperp_bis, rcond=None)
 print("Angular bisector ends","\n")
 
 #i_cont_mat =np.array([np.block([-1,secvec[2]/dis[2],secvec[1]/dis[0]]), np.block([ secvec[2]/dis[1],-1,secvec[0]/dis[0]]),np.block([secvec[1]/dis[1],secvec[0]/dis[2],-1])])
-i_cont_mat =np.array([np.block([secvec[2]/dis[2],secvec[1]/dis[0],-1]), np.block([ -1,secvec[0]/dis[0],secvec[2]/dis[1]]),np.block([secvec[0]/dis[2],-1,secvec[1]/dis[1],-1])])
-i_circ_dir=G_v@i_cont_mat
-i_circ_nor=R_o@i_circ_dir
-i_circ_cof=np.diag(i_circ_nor.T@G_v).reshape(-1,1)
-G_I = LA.lstsq(i_circ_nor.T,i_circ_cof, rcond=None)
+i_con =np.array([np.block([secvec[2]/dis[2],secvec[1]/dis[0],-1]), np.block([ -1,secvec[0]/dis[0],secvec[2]/dis[1]]),np.block([secvec[0]/dis[2],-1,secvec[1]/dis[1]])])
+print("i_con",i_con,"\n")
+i_dir=G_v @ i_con
+print("i_dir",i_dir,"\n")
+i_nor=R_o@i_dir
+print("i_nor",i_nor,"\n")
+i_cof=np.diag(i_nor.T@G_incir).reshape(-1,1)
+print("i_cof",i_cof,"\n")
+G_I = LA.lstsq(i_nor.T,i_cof, rcond=None)
 print(G_I,"\n")
 
 
