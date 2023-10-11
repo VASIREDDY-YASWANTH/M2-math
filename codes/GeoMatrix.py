@@ -183,6 +183,16 @@ cmat_iperp_bis= np.diag(G_idir_alt.T@G_imid).reshape(-1,1)
 G_iO = LA.lstsq(G_idir_alt.T, cmat_iperp_bis, rcond=None)
 print("Angular bisector ends","\n")
 
+#i_cont_mat =np.array([np.block([-1,secvec[2]/dis[2],secvec[1]/dis[0]]), np.block([ secvec[2]/dis[1],-1,secvec[0]/dis[0]]),np.block([secvec[1]/dis[1],secvec[0]/dis[2],-1])])
+i_cont_mat =np.array([np.block([-1,secvec[2]/dis[2],secvec[1]/dis[0]]), np.block([ secvec[2]/dis[1],-1,secvec[0]/dis[0]]),np.block([secvec[1]/dis[1],secvec[0]/dis[2],-1])])
+i_circ_dir=G_v@i_cont_mat
+i_circ_nor=R_o@i_circ_dir
+i_circ_cof=np.diag(i_circ_nor.T@G_v).reshape(-1,1)
+G_I = LA.lstsq(i_circ_nor.T,i_circ_cof, rcond=None)
+print(G_I,"\n")
+
+
+
 #------------------------------Angular Bisector Ends-------------------------------
 
 
@@ -202,6 +212,7 @@ H = G_H[0]
 O = G_O[0]
 #incentre
 I = G_iO[0]
+Id= G_I[0]
 #incircle contact points
 D3=G_incir[:,0]
 E3=G_incir[:,1]
@@ -254,6 +265,7 @@ E=E.reshape(-1,1)
 F=F.reshape(-1,1)
 G=G.reshape(-1,1)
 H=H.reshape(-1,1)
+Id=Id.reshape(-1,1)
 D3=D3.reshape(-1,1)
 E3=E3.reshape(-1,1)
 F3=F3.reshape(-1,1)
@@ -299,9 +311,9 @@ plt.plot(x_icirc[0,:],x_icirc[1,:],label='$incircle$')
 
 
 #Labeling the coordinates
-tri_coords = np.block([[A,B,C,D3,E3,F3,I]])
+tri_coords = np.block([[A,B,C,D3,E3,F3,I,Id]])
 plt.scatter(tri_coords[0,:], tri_coords[1,:])
-vert_labels = ['A','B','C','D3','E3','F3','I']
+vert_labels = ['A','B','C','D3','E3','F3','I','Id']
 for i, txt in enumerate(vert_labels):
     plt.annotate(txt, # this is the text
                  (tri_coords[0,i], tri_coords[1,i]), # this is the point to label
