@@ -1,15 +1,15 @@
 
 //Function declaration
-double Listnorm(avyuh *a);//norm of a vector
-double Listdot(avyuh *a, avyuh * b);//inner product
-double ListVecdot(sadish *a, sadish * b);//inner product
-avyuh *Listsub(avyuh *a, avyuh *b);//subtract two matrices
-avyuh *Listadd(avyuh *a, avyuh *b);//add two matrices
+double Listnorm(avyuh *a);//norm of a vector                        //
+double Listdot(avyuh *a, avyuh * b);//inner product                 //
+double ListVecdot(sadish *a, sadish * b);//inner product            //
+avyuh *Listsub(avyuh *a, avyuh *b);//subtract two matrices          //
+avyuh *Listadd(avyuh *a, avyuh *b);//add two matrices               //
 avyuh *Listscale(avyuh *a, int m, int n, double k);//scale matrix
 avyuh *Listinv(avyuh *mat, int m);//invert an m  x m matrix, m <=3
-avyuh *Listmul(avyuh *a, avyuh *b);//multiply matrices a and b
-avyuh *rotList(double theta); //rotation matrix
-avyuh *normVec(avyuh *a); //normal vector
+avyuh *Listmul(avyuh *a, avyuh *b);//multiply matrices a and b      // 
+avyuh *rotList(double theta); //rotation matrix                     //
+avyuh *normVec(avyuh *a); //normal vector                           //
 void circulantList(avyuh *c, int m);
 avyuh *Listsec(avyuh *a, avyuh * b, int m, double k);//section formula
 
@@ -21,7 +21,7 @@ sadish *xtrtdiag(avyuh *a);//to extract diagonal vector from a matrix
 sadish *xtrtsqrtdiag(avyuh *a);//to extract sqrt diagonal vector from a matrix
 avyuh *h_stkList(avyuh *a,avyuh *b);//concates list a,b horizontally and transposes the result
 avyuh *line_intersect(avyuh *a);//to find intersection point of lines (solving pair of linear equations)
-double readidx(avyuh *a,int m,int n);//to read the value of an element at index (m,n)
+//double readidx(avyuh *a,int m,int n);//to read the value of an element at index (m,n)
 //End function declaration
 
 
@@ -286,7 +286,7 @@ return head;
 }
 
 
-
+/*
 //function to read the value of element at index (m,n)
 double readidx(avyuh *a,int m,int n)
 {
@@ -303,6 +303,6 @@ head=head->next;
 double val = Vecind(head->vector,n)->data;
 return val;
 }
-
+*/
 
 
