@@ -9,8 +9,6 @@ int  main()
 FILE *fp; //file pointer
 double val;//for reading file data
 int m =2, n=3, i, j;
-
-
 //load matrix from file
 avyuh *G_v= loadList("vertices.dat", m, n);
 avyuh *C_mid=loadList("C_mid.dat",3,3);
@@ -63,13 +61,13 @@ avyuh *R_o = rotList(M_PI/2);
         r2=i_con->next->vector;
         r3=i_con->next->next->vector;
 r1->data= -1;  
-r1->next->data=readidx(secvec,0,2)/readidx(G_dis,0,2);
-r1->next->next->data=readidx(secvec,0,1)/readidx(G_dis,0,0);
-r2->data=readidx(secvec,0,2)/readidx(G_dis,0,1);
+r1->next->data=secvec->vector->next->next->data/G_dis->vector->next->next->data;
+r1->next->next->data=secvec->vector->next->data/G_dis->vector->data;
+r2->data=secvec->vector->next->next->data/G_dis->vector->next->data;
 r2->next->data=-1;
-r2->next->next->data=readidx(secvec,0,0)/readidx(G_dis,0,0);
-r3->data=readidx(secvec,0,1)/readidx(G_dis,0,1);
-r3->next->data=readidx(secvec,0,0)/readidx(G_dis,0,2);
+r2->next->next->data=secvec->vector->data/G_dis->vector->data;
+r3->data=secvec->vector->next->data/G_dis->vector->next->data;
+r3->next->data=secvec->vector->data/G_dis->vector->next->next->data;
 r3->next->next->data=-1;
 		avyuh *a_dir=Listmul(G_v,i_con);
 		avyuh *a_nor=Listmul(R_o,a_dir);
