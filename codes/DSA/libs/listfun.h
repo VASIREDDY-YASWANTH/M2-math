@@ -28,10 +28,10 @@ avyuh *line_intersect(avyuh *a);//to find intersection point of lines (solving p
 //inner product
 double ListVecdot(sadish *a, sadish *b){
 	double val = 0;
-	sadish *tempa=a, *tempb=b;
-	while(tempa !=NULL){
+	sadish  *tempb=b;
+	 for(sadish *tempa=a;tempa!=NULL;tempa=tempa->next){
 		val += tempa->data*tempb->data;
-		tempa = tempa->next;
+		//tempa = tempa->next;
 		tempb = tempb->next;
 	}
 	return val;
@@ -40,12 +40,12 @@ double Listdot(avyuh *a, avyuh *b){
 	return ListVecdot(a->vector, b->vector);
 }
 sadish *ListVecsub(sadish *a, sadish *b){
-	sadish *head = (sadish *)malloc(sizeof(sadish)), *c, *tempa=a, *tempb=b;
+	sadish *head = (sadish *)malloc(sizeof(sadish)), *c,  *tempb=b;
 	c = head; 
 	head->next = NULL;
-	while(tempa !=NULL){
+	for(sadish *tempa=a;tempa!=NULL;tempa=tempa->next){
 		c->data = tempa->data-tempb->data;
-		tempa = tempa->next;
+		//tempa = tempa->next;
 		tempb = tempb->next;
 	if(tempa!=NULL){
 		c->next = (sadish *)malloc(sizeof(sadish));
@@ -58,12 +58,12 @@ sadish *ListVecsub(sadish *a, sadish *b){
 
 //subtract two matrices
 avyuh *Listsub(avyuh *a, avyuh *b){
-	avyuh *c= (avyuh *)malloc(sizeof(avyuh)), *tempa = a, *tempb = b, *head; 
+	avyuh *c= (avyuh *)malloc(sizeof(avyuh)),  *tempb = b, *head; 
 	c->next = NULL;
 	head = c;
-	while(tempa !=NULL){
+	 for(avyuh *tempa=a;tempa!=NULL;tempa=tempa->next){
 		c->vector = ListVecsub(tempa->vector,tempb->vector);
-		tempa = tempa->next;
+		//tempa = tempa->next;
 		tempb = tempb->next;
 	if(tempa!=NULL){
 		c->next = (avyuh *)malloc(sizeof(avyuh));
@@ -76,12 +76,12 @@ avyuh *Listsub(avyuh *a, avyuh *b){
 
 
 sadish *ListVecadd(sadish *a, sadish *b){
-        sadish *head = (sadish *)malloc(sizeof(sadish)), *c, *tempa=a, *tempb=b;
+        sadish *head = (sadish *)malloc(sizeof(sadish)), *c, *tempb=b;
         c = head; 
         head->next = NULL;
-        while(tempa !=NULL){
+         for(sadish *tempa=a;tempa!=NULL;tempa=tempa->next){
                 c->data = tempa->data+tempb->data;
-                tempa = tempa->next;
+                //tempa = tempa->next;
                 tempb = tempb->next;
         if(tempa!=NULL){
                 c->next = (sadish *)malloc(sizeof(sadish));
@@ -94,12 +94,12 @@ sadish *ListVecadd(sadish *a, sadish *b){
 
 //add two matrices
 avyuh *Listadd(avyuh *a, avyuh *b){
-        avyuh *c= (avyuh *)malloc(sizeof(avyuh)), *tempa = a, *tempb = b, *head; 
+        avyuh *c= (avyuh *)malloc(sizeof(avyuh)), *tempb = b, *head; 
         c->next = NULL;
         head = c;
-        while(tempa !=NULL){
+         for(avyuh *tempa=a;tempa!=NULL;tempa=tempa->next){
                 c->vector = ListVecadd(tempa->vector,tempb->vector);
-                tempa = tempa->next;
+                //tempa = tempa->next;
                 tempb = tempb->next;
         if(tempa!=NULL){
                 c->next = (avyuh *)malloc(sizeof(avyuh));
@@ -247,12 +247,12 @@ return head;
 
 //function to concate lists a and b horizontally and transpose the result
 avyuh *h_stkList(avyuh *a, avyuh *b){
-	avyuh *c= (avyuh *)malloc(sizeof(avyuh)), *tempa = a, *tempb = b, *head; 
+	avyuh *c= (avyuh *)malloc(sizeof(avyuh)), *tempb = b, *head; 
 	c->next = NULL;
 	head = c;
-	while(tempa !=NULL){
+	 for(avyuh *tempa=a;tempa!=NULL;tempa=tempa->next){
 		c->vector = tempa->vector;
-		tempa = tempa->next;
+		//tempa = tempa->next;
 	
 		c->next = (avyuh *)malloc(sizeof(avyuh));
 		c->next->next=NULL;
