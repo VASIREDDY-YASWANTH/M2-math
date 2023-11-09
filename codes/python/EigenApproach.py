@@ -7,7 +7,7 @@
 
 
 import sys                                          #for path to external scripts
-sys.path.insert(0, './CoordGeo')        #path to my scripts
+sys.path.insert(0, '/home/VASIREDDY-YASWANTH/github/geometry/codes/CoordGeo') #path to my scripts
 import numpy as np
 import numpy.linalg as LA
 import scipy.linalg as SA
