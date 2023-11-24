@@ -92,11 +92,6 @@ double **sigmat=Matsub(Matmul(Matadd(Matmul(V,h,2,2,1),u,2,1),transposeMat(Matad
 
 double **E_val=Mateigval(sigmat);
 double **P=Mateigvec(sigmat);
-//double **P=eig_vec(sigmat);
-//double **ga=gaussianElimination(P);
-//double **P = createMat(2,2);
-//P[0][0]= -0.85065081;  P[0][1]= -0.52573111;  P[1][0]= 0.52573111;	P[1][1]= -0.85065081;
-//P[0][0]= -0.85065081/-0.52573111;  P[0][1]= -0.52573111/-0.8506081;  P[1][0]= 1;	P[1][1]= 1;
 double **u1=createMat(2,1);
 u1[0][0]=sqrt(fabs(E_val[1][0]));  u1[1][0]=sqrt(fabs(E_val[0][0]));
 double **u2=createMat(2,1);
