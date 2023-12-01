@@ -165,64 +165,19 @@ avyuh *Listeigvec(avyuh *a)
 {
 avyuh *lam=Listeigval(a);
 printList(lam);
-//avyuh *I=createList(2,2);
-//I->vector->data=1 ;
-//I->vector->next->data= 0;
-//I->next->vector->data= 0;
-//I->next->vector->next->data= 1;
 avyuh *omat=rotList(M_PI/2);
-//A-lambdaI   approach 1
-//avyuh *b1=Listadd(a,Listscale(I,-lam->vector->data));
-//avyuh *b2=Listadd(a,Listscale(I,-lam->next->vector->data));
-
-
-//A-lambdaI   approach 1
+//A-lambdaI   approach 2
 avyuh *b1=Listadd(a,Listscale(Listeye(2),-lam->vector->data));
 avyuh *b2=Listadd(a,Listscale(Listeye(2),-lam->next->vector->data));
-
-//row matrix aproach 1
-//avyuh *temp1=createList(2,1);   avyuh *temp2=createList(2,1);
-//temp1->vector->data=b1->vector->data; 	temp1->next->vector->data=b1->vector->next->data;
-//temp2->vector->data=b2->vector->data; 	temp2->next->vector->data=b2->vector->next->data;
-
-//row matrix approach 2
-//avyuh *temp1=(avyuh *)malloc(sizeof(avyuh));
-//avyuh *temp2=(avyuh *)malloc(sizeof(avyuh));
-//temp1->next=NULL;
-//temp2->next=NULL;
-//temp1->vector=b1->vector;
-//temp2->vector=b2->vector;
-
-//row matrix approach 3
-//avyuh *temp1=Listrow(b1,0);
-//avyuh *temp2=Listrow(b2,0);
-
-
-//unit vector approach 1
-//double const1=sqrt(Listmul(transposeList(temp1),temp1)->vector->data);
-//double const2=sqrt(Listmul(transposeList(temp2),temp2)->vector->data);
-//avyuh *c1=Listscale(temp1,1/const1);
-//avyuh *c2=Listscale(temp2,1/const2);
-
-//unit vector approach 2
-//double const1=Listnorm(temp1);
-//double const2=Listnorm(temp2);
-
 // unit vector approach 3
 avyuh *c1 = Listunit(Listrow(b1,0));
 avyuh *c2 = Listunit(Listrow(b2,0));
-
-
 // find eigen vector
 avyuh *p1=transposeList(Listmul(omat,c1));
 avyuh *p2=transposeList(Listmul(omat,c2));
-
 return Liststack(p1,p2);
 }
 //end of function to find eigen vectors
-
-
-
 
 	
 //function to scale the vector with value k
