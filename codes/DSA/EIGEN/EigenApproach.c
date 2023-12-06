@@ -13,7 +13,7 @@ u->vector->data=-u->vector->data;	u->next->vector->data=-u->next->vector->data; 
 avyuh *V=Listeye(2);			  			 	// 2x2 identity matrix for circle
 avyuh *f=createList(1,1); f->vector->data=pow(Listnorm(u),2)-r*r;	//     from circle equatin x^2+y^2=f
 //
-avyuh *contactpts=ListContactPts(V,h,u,f);     // function to find contact points 
+avyuh *contactpts=ListContactPts(V,h,u,f);     // function to find contact points ( function in libs/listfun.h)
 //
 // Printing lists . 	
 printf("V = \n");		printList(V);
