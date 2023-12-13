@@ -112,24 +112,5 @@ Joining these points forms the required figure
     \label{fig:math_comp2}
 \end{figure}
 
-%for figure generation using latex
-\begin{comment}
-\begin{center}
-\begin{tikzpicture}
-    \coordinate (A) at (0,0);
-    \coordinate (B) at (5,0);
-    \coordinate (P) at (3.464101,-2);
-    \coordinate (Q) at (3.464101,2);
 
-    % Draw the quadrilateral
-    \draw (-2,-4) -- (7,-4) -- (7,4) -- (-2,4) -- cycle;
-    \draw (A) -- (B) -- (P)  -- cycle;
-    \draw (A) -- (B) -- (Q)  -- cycle;
-
-    % Label the points
-    \foreach \point in {A,B,P,Q}
-        \fill (\point) circle (2pt) node[above right] {$\point$};
-\end{tikzpicture}
-\end{center}
-\end{comment}
 \end{document}
